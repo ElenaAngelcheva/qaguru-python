@@ -1,5 +1,6 @@
 import pytest
 from selene.support.shared import browser
+from selene import be, have
 
 
 
@@ -12,3 +13,9 @@ def browser_size():
 @pytest.fixture()
 def init_browser():
     browser.open('https://yandex.ru/')
+
+
+@pytest.fixture()
+def add_query():
+    browser.element('#text').should(be.blank).type(
+        'Selene - User-oriented Web UI browser tests in Python').press_enter()

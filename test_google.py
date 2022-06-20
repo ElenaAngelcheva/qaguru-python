@@ -1,17 +1,13 @@
 from selene.support.shared import browser
-from selene import be, have
+from selene import have
 
 
-def test_first(init_browser):
-    browser.element('#text').should(be.blank).type(
-        'Selene - User-oriented Web UI browser tests in Python').press_enter()
+def test_search_selene_pass(init_browser, add_query):
     browser.element('#search-result').should(have.text('Selene - User-oriented Web UI browser tests in Python'))
 
 
-def test_second(init_browser):
-    browser.element('#text').should(be.blank).type(
-        'Selene - User-oriented Web UI browser tests in Python').press_enter()
-    browser.element('#search-result').should(have.text('selene (@qweenselene) / Twitter'))
+def test_search_selene_fail(init_browser, add_query):
+    browser.element('#search-result').should(have.text('Selen - User-oriented Web UI browser tests in Python'))
 
 
 
